@@ -30,6 +30,7 @@ class _HistoryScreenState extends State<HistoryScreen> {
                 bottom: 16,
               ),
               child: ActivityWidget(
+                number: (index + 1).toString(),
                 activity: activity,
                 selectActivityType: widget.selectedActivityType,
               ),

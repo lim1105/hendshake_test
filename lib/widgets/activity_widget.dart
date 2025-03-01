@@ -4,8 +4,9 @@ import 'package:hendshake_test/models/activity_model.dart';
 class ActivityWidget extends StatelessWidget {
   final ActivityModel? activity;
   final String? selectActivityType;
+  final String? number;
 
-  const ActivityWidget({super.key, required this.activity, this.selectActivityType});
+  const ActivityWidget({super.key, required this.activity, this.selectActivityType, this.number});
 
   @override
   Widget build(BuildContext context) {
@@ -24,11 +25,21 @@ class ActivityWidget extends StatelessWidget {
                 : null,
         border: Border.all(),
       ),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
+      child: Row(
         children: [
-          Text('activity: ${activity?.activity ?? '-'}'),
-          Text('price: ${activity?.price.toString() ?? '-'}'),
+          if (number != null) ...[
+            Text(number!),
+          ],
+          const SizedBox(width: 16),
+          Expanded(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text('activity: ${activity?.activity ?? '-'}'),
+                Text('price: ${activity?.price.toString() ?? '-'}'),
+              ],
+            ),
+          ),
         ],
       ),
     );
